@@ -1,57 +1,70 @@
 //
-//  BLEMetaWear.swift
+//  ConnectionView.swift
 //  SmartHeadGear
 //
 //  Created by Joe Davis on 11/7/20.
 //
-import Foundation
+
 import SwiftUI
+import MetaWear
 
-
-struct ConnectionView:  View {
-    @ObservedObject var ble = MetawearConnection()
+struct ConnectionView: View  {
+    @EnvironmentObject var connection: MetawearConnection
     
     var body: some View {
         HStack {
-            if (ble.loading) {
-                ProgressView().frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealWidth: 100, maxWidth: 100, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealHeight: 10, maxHeight: 20, alignment: .center)
+            if (connection.loading) {
+                ProgressView().frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealWidth: 100, maxWidth: 100, minHeight: 20, idealHeight: 20, maxHeight: 20, alignment: .center).padding(8)
             } else {
-                if (ble.connected == "Connection Lost") {
-                    Button.init(action:{
-                        ble.connectToRemembered()
-                    },label: {
-                        Text("Reconnect")
-                    }).frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealWidth: 100, maxWidth: 100, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealHeight: 10, maxHeight: 20, alignment: .center)
-                    Button.init(action:{
-                        ble.forget()
-                    },label: {
-                        Text("Forget")
-                    }).padding(8)
-                } else if (ble.connected.contains(":")) {
-                    Button.init(action:{
-                        ble.disconnect()
-                    },label: {
-                        Text("Disconnect")
-                    }).frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealWidth: 100, maxWidth: 100, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealHeight: 10, maxHeight: 20, alignment: .center)
-                    Button.init(action:{
-                        ble.testLed()
-                    },label: {
-                        Text("Test")
-                    }).padding(8)
+                if (connection.connected == "Connection Lost") {
+                    ConnectButton(text:"Reconnect") {
+                        connection.connectToRemembered()
+                    }
+                    ConnectButton(text:"Forget") {
+                        connection.forget()
+                    }
+                } else if (connection.connected.contains(":")) {
+                    ConnectButton(text:"Disconnect") {
+                        connection.disconnect()
+                    }
+                    ConnectButton(text:"Test") {
+                        connection.reset()
+                    }
                 } else {
-                    Button.init(action:{
-                        ble.connect()
-                    },label: {
-                        Text("Connect")
-                    }).frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealWidth: 100, maxWidth: 100, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealHeight: 10, maxHeight: 20, alignment: .center)
+                    ConnectButton(text:"Connect") {
+                        connection.connect()
+                    }
                 }
             }
-            Text(ble.connected).padding(10)
-            Circle().frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealWidth: 10, maxWidth: 20, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealHeight: 10, maxHeight: 20, alignment: .center).foregroundColor( (ble.connected.contains(":")) ? .green : .red)
+            Text(connection.connected).padding(5)
+            Circle().frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealWidth: 10, maxWidth: 20, minHeight: 20, idealHeight: 20, maxHeight: 20, alignment: .center).foregroundColor( (connection.connected.contains(":")) ? .green : .red)
             
-        }
+        }.frame(height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
     }
 }
 
+struct ConnectButton: View {
+    let text: String
+    var action: () -> Void
+        
+    var body: some View {
+        Button.init(action:{
+            self.action()
+        },label: {
+            Text(text)
+        })
+        .frame( minHeight: 20, idealHeight: 20, alignment: .center).accentColor(Color.blue).padding(8)
+//        .foregroundColor(.white)
+//        .background(Color.blue)
+//        .cornerRadius(8)
+//        .padding(5)
+    }
 
+}
+
+struct ConnectionView_Previews: PreviewProvider {
+    static var previews: some View {
+        ConnectionView()
+    }
+}
 

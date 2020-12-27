@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/Pods-SmartHeadGear-SmartHeadGearUITests/Pods-SmartHeadGear-SmartHeadGearUITests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Bolts-Swift/BoltsSwift.framework
+${BUILT_PRODUCTS_DIR}/MetaWear/MetaWear.framework
+${BUILT_PRODUCTS_DIR}/ZIPFoundation/ZIPFoundation.framework
+${BUILT_PRODUCTS_DIR}/iOSDFULibrary/iOSDFULibrary.framework

@@ -1,0 +1,6 @@
+framework module Pods_SmartHeadGear_SmartHeadGearUITests {
+  umbrella header "Pods-SmartHeadGear-SmartHeadGearUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
