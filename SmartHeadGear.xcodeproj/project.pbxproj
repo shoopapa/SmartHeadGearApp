@@ -8,15 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		443AEE09FF70E62220FF455F /* Pods_SmartHeadGear.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788E1ECF900774DE27E673EE /* Pods_SmartHeadGear.framework */; };
-		47069C922591911600681461 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 47069C912591911600681461 /* GoogleService-Info.plist */; };
-		47069C932591911600681461 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 47069C912591911600681461 /* GoogleService-Info.plist */; };
-		47069C942591911600681461 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 47069C912591911600681461 /* GoogleService-Info.plist */; };
 		475099B2256AAEF3000D0126 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475099B1256AAEF3000D0126 /* TestView.swift */; };
 		475099B7256AB3C2000D0126 /* ConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475099B6256AB3C1000D0126 /* ConnectionView.swift */; };
 		475099BC256DA0A1000D0126 /* StreamingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475099BB256DA0A1000D0126 /* StreamingView.swift */; };
 		475099C1256DA5DE000D0126 /* StreamingControllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475099C0256DA5DE000D0126 /* StreamingControllView.swift */; };
 		475099C9256DAF4A000D0126 /* MetawearDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475099C8256DAF4A000D0126 /* MetawearDevice.swift */; };
 		4777B3EB25984BEB001C75D5 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4777B3EA25984BEB001C75D5 /* AlertView.swift */; };
+		4777B3F025985849001C75D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4777B3EF25985849001C75D5 /* GoogleService-Info.plist */; };
+		4777B3F125985849001C75D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4777B3EF25985849001C75D5 /* GoogleService-Info.plist */; };
+		4777B3F225985849001C75D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4777B3EF25985849001C75D5 /* GoogleService-Info.plist */; };
 		478A07082544A517001CA3C2 /* SmartHeadGearApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478A07072544A517001CA3C2 /* SmartHeadGearApp.swift */; };
 		478A070A2544A517001CA3C2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478A07092544A517001CA3C2 /* MainView.swift */; };
 		478A070C2544A519001CA3C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 478A070B2544A519001CA3C2 /* Assets.xcassets */; };
@@ -52,13 +52,13 @@
 		232740C9F092B2175CA90E66 /* Pods_SmartHeadGear_SmartHeadGearUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartHeadGear_SmartHeadGearUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47069C892591875900681461 /* SmartHeadGear-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SmartHeadGear-Bridging-Header.h"; path = "../../../.Trash/SmartHeadGear-Bridging-Header.h"; sourceTree = "<group>"; };
 		47069C8D2591879300681461 /* SmartHeadGear-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmartHeadGear-Bridging-Header.h"; sourceTree = "<group>"; };
-		47069C912591911600681461 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		475099B1256AAEF3000D0126 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		475099B6256AB3C1000D0126 /* ConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionView.swift; sourceTree = "<group>"; };
 		475099BB256DA0A1000D0126 /* StreamingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingView.swift; sourceTree = "<group>"; };
 		475099C0256DA5DE000D0126 /* StreamingControllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingControllView.swift; sourceTree = "<group>"; };
 		475099C8256DAF4A000D0126 /* MetawearDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetawearDevice.swift; sourceTree = "<group>"; };
 		4777B3EA25984BEB001C75D5 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		4777B3EF25985849001C75D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		478A07042544A517001CA3C2 /* SmartHeadGear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartHeadGear.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		478A07072544A517001CA3C2 /* SmartHeadGearApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartHeadGearApp.swift; sourceTree = "<group>"; };
 		478A07092544A517001CA3C2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -189,7 +189,7 @@
 				478A07092544A517001CA3C2 /* MainView.swift */,
 				478A070B2544A519001CA3C2 /* Assets.xcassets */,
 				47069C892591875900681461 /* SmartHeadGear-Bridging-Header.h */,
-				47069C912591911600681461 /* GoogleService-Info.plist */,
+				4777B3EF25985849001C75D5 /* GoogleService-Info.plist */,
 				478A07102544A519001CA3C2 /* Info.plist */,
 				478A070D2544A519001CA3C2 /* Preview Content */,
 			);
@@ -349,7 +349,7 @@
 			files = (
 				478A070F2544A519001CA3C2 /* Preview Assets.xcassets in Resources */,
 				478A070C2544A519001CA3C2 /* Assets.xcassets in Resources */,
-				47069C922591911600681461 /* GoogleService-Info.plist in Resources */,
+				4777B3F025985849001C75D5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,7 +357,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47069C932591911600681461 /* GoogleService-Info.plist in Resources */,
+				4777B3F125985849001C75D5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,7 +365,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47069C942591911600681461 /* GoogleService-Info.plist in Resources */,
+				4777B3F225985849001C75D5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
