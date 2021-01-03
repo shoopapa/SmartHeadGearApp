@@ -11,6 +11,8 @@ struct ProfileView: View {
     
     @ObservedObject var info : AppDelegate
     
+
+    
     var body: some View {
         VStack{
          
@@ -34,6 +36,13 @@ struct ProfileView: View {
                     .clipShape(Capsule())
             }
         }.frame(width: 300, height: 500, alignment: .center)
+        .onAppear() {
+            if  let pastEmail = UserDefaults.standard.string(forKey: "email") {
+                print("past email: ", pastEmail)
+                self.info.email = pastEmail
+            }
+            
+        }
     }
 }
 

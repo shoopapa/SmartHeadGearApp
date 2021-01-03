@@ -27,6 +27,12 @@ class AppDelegate: NSObject,UIApplicationDelegate,GIDSignInDelegate,ObservableOb
     
     @Published var email = ""
     
+    let userDefault = UserDefaults.standard
+
+    let launchedBefore = UserDefaults.standard.bool(forKey: "usersignedin")
+    let launchedBeforeEmail = UserDefaults.standard.string(forKey: "email")
+    
+    
     func application(_ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions:
             [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -50,6 +56,7 @@ class AppDelegate: NSObject,UIApplicationDelegate,GIDSignInDelegate,ObservableOb
         // Signing into Firebase
         
         Auth.auth().signIn(with: credential) { (result,err) in
+      
             
             if err != nil{
                 print((err?.localizedDescription)!)
@@ -57,6 +64,9 @@ class AppDelegate: NSObject,UIApplicationDelegate,GIDSignInDelegate,ObservableOb
             }
             
             self.email = (result?.user.email)!
+            self.userDefault.set(true, forKey: "usersignedin")
+            self.userDefault.set(self.email, forKey: "email")
+            self.userDefault.synchronize()
             
             print(self.email)
       }

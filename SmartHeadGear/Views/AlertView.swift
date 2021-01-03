@@ -13,9 +13,12 @@ struct AlertControlView: UIViewControllerRepresentable {
     
     @Binding var textString: String
     @Binding var showAlert: Bool
+   
     
     var title: String
     var message: String
+    
+    var action: () -> Void
     
     // Make sure that, this fuction returns UIViewController, instead of UIAlertController.
     // Because UIAlertController gets presented on UIViewController
@@ -59,6 +62,8 @@ struct AlertControlView: UIViewControllerRepresentable {
                 alert.dismiss(animated: true) {
                     self.showAlert = false
                 }
+                
+                self.action()
             })
             
             // Most important, must be dispatched on Main thread,

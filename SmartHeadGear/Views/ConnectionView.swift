@@ -25,10 +25,10 @@ struct ConnectionView: View  {
                     }
                 } else if (connection.connected.contains(":")) {
                     ConnectButton(text:"Disconnect") {
-                        connection.disconnect()
+                        connection.reset()
                     }
                     ConnectButton(text:"Test") {
-                        connection.reset()
+                        connection.testLed()
                     }
                 } else {
                     ConnectButton(text:"Connect") {

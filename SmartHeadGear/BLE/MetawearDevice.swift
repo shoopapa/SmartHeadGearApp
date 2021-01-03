@@ -163,7 +163,7 @@ open class MetawearConnection: ObservableObject {
         self.gyroLines = [[],[],[]]
         
         print("start log")
-        mbl_mw_acc_bosch_set_range(device.board, MBL_MW_ACC_BOSCH_RANGE_8G)
+        mbl_mw_acc_bosch_set_range(device.board, MBL_MW_ACC_BOSCH_RANGE_16G)
         mbl_mw_acc_set_odr(device.board, 800)
         mbl_mw_acc_bosch_write_acceleration_config(device.board)
         let signal = mbl_mw_acc_bosch_get_acceleration_data_signal(device.board)!
@@ -223,7 +223,6 @@ open class MetawearConnection: ObservableObject {
         
         mbl_mw_logger_subscribe(logger, bridge(obj: self)) { (context, obj) in
             let acceleration: MblMwCartesianFloat = obj!.pointee.valueAs()
-            print(Double(acceleration.x))
             let _self: MetawearConnection = bridge(ptr: context!)
             DispatchQueue.main.async {
                 _self.accerometorLines[0].append( Double(acceleration.x) )

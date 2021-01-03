@@ -17,13 +17,12 @@ struct MainView:  View {
     var body: some View {
         VStack {
             TabView {
-                ConnectionTab()
+                ConnectionTab(info: self.info)
                     .tabItem {
                       Image(systemName: "video.fill")
                       Text("Connection")
                     }
-                
-                Text("Moves AI Screen")
+                MoveView(info:self.info)
                     .tabItem {
                       Image(systemName: "icloud.fill")
                       Text("Simulations")

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ConnectionTab:  View {
     let connection = MetawearConnection()
+    @ObservedObject var info : AppDelegate
     
     var body: some View {
 
@@ -17,7 +18,7 @@ struct ConnectionTab:  View {
           
             ConnectionView().environmentObject(connection)
             StreamingView().environmentObject(connection)
-            StreamingControllView().environmentObject(connection)
+            StreamingControllView(info: self.info).environmentObject(connection)
                    
         }
     }
