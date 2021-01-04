@@ -20,10 +20,13 @@ struct MoveView: View {
     var body: some View {
         NavigationView {
             List(self.networkManager.moveList) { move in
-                VStack(alignment: .leading) {
-                    Text(move.moveName)
-                    Text(move.email)
+                NavigationLink(destination: MoveDetail(id: move.id!)) {
+                    VStack(alignment: .leading) {
+                        Text(move.moveName)
+                        Text(move.email)
+                    }
                 }
+               
             }
             .navigationBarTitle("Moves")
             .onAppear() {
@@ -40,9 +43,7 @@ struct MoveView: View {
 class NetworkManager: ObservableObject {
 
     @Published var moveList = [MoveInfo]()
-    @Published var move = Move()
     @Published var loading = false
-    @Published var moveName:String = ""
 
     let db = Firestore.firestore()
 
@@ -68,17 +69,6 @@ class NetworkManager: ObservableObject {
                 }
             }
     }
-    
-    func getMove(id:String) {
-        db.collection("moves").document(id)
-            .getDocument { (document, err) in
-                if let document = document, document.exists {
-                    self.move = try! document.data(as: Move.self)!
-                } else {
-                    print("Document does not exist")
-                }
-            }
-    }
 }
 
 struct MoveInfo: Identifiable, Codable {
@@ -88,16 +78,3 @@ struct MoveInfo: Identifiable, Codable {
     var moveName: String
 }
 
-struct Move: Identifiable, Codable {
-    @DocumentID var id: String? = UUID().uuidString
-    
-    var email: String?
-    var moveName: String?
-    var time: Int?
-    var accerationX: [Float]?
-    var accerationY: [Float]?
-    var accerationZ: [Float]?
-    var GryoX:[Float]?
-    var GryoY:[Float]?
-    var GryoZ:[Float]?
-}
