@@ -17,20 +17,34 @@ struct MoveDetail: View {
     @ObservedObject var get:GetMoveManager = GetMoveManager()
 
     var body: some View {
+
         ScrollView {
             VStack(alignment: .leading) {
-                Text(self.get.move!.moveName)
+                Text(self.get.move.moveName)
                     .font(.title)
                     .foregroundColor(.primary)
-                HStack {
-                    Text("park")
-                    Spacer()
-                    Text("state")
-                }
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-
                 Divider()
+                HStack {
+                    let accx = self.get.move.accerationX.count
+                    let accy = self.get.move.accerationY.count
+                    let accz = self.get.move.accerationZ.count
+           
+
+                    Text("acceration (x,y,z)")
+                    Spacer()
+                    Text("(\(accx),\(accy),\(accz))")
+                }
+                HStack {
+                    let gryox = self.get.move.gyroX.count
+                    let gryoy = self.get.move.gyroY.count
+                    let gryoz = self.get.move.gyroZ.count
+                    Text("Gryo (x,y,z)")
+                    Spacer()
+                    Text("(\(gryox),\(gryoy),\(gryoz))")
+
+                }
+
+
 
 //                Text(self.get.move.description)
             }
@@ -39,7 +53,7 @@ struct MoveDetail: View {
                 self.get.getMove(id: self.id)
             }
         }
-        .navigationTitle(self.get.move!.moveName )
+        .navigationTitle(self.get.move.moveName )
         .navigationBarTitleDisplayMode(.inline)
     }
 }
@@ -48,22 +62,27 @@ struct MoveDetail: View {
 
 class GetMoveManager: ObservableObject {
     
-    @Published var move:Move? = Move(email: "loading@loading.com", moveName: "String", time: 0)
-    @Published var loading = false
+    @Published var move:Move = Move()
+    @Published var loading = true
 
     let db = Firestore.firestore()
 
     // good example of workin
     func getMove(id:String) {
+        self.loading = true
         let docRef = db.collection("moves").document(id)
         
-        docRef.getDocument { (documentSnapshot, error) in
-            guard let document = documentSnapshot else {
-                   print("Error fetching document: \(error!)")
-                   return
+        docRef.getDocument { doc, error in
+            if let doc = doc,doc.exists {
+                print("it exits")
+                if let ween = try? doc.data(as: Move.self) {
+                    print("it should be set")
+                    self.move = ween
+                }
+            } else {
+                print("jawn fucked up")
             }
-            
-            self.move = try! document.data(as: Move.self)
+            self.loading = false
         }
     }
 }
@@ -71,21 +90,17 @@ class GetMoveManager: ObservableObject {
 
 struct Move: Identifiable, Codable {
     @DocumentID var id: String? = UUID().uuidString
+    // if it fails to parse it because somthing in here is spelled wrong
+    var email: String = ""
+    var moveName: String = ""
+    var time: Float = 0
+    var accerationX: [Float] = []
+    var accerationY: [Float] = []
+    var accerationZ: [Float] = []
+    var gyroX:[Float] = []
+    var gyroY:[Float] = []
     
-    var email: String
-    var moveName: String
-    var time: Float
-//    var accerationX: [Float] = []
-//    var accerationY: [Float] = []
-//    var accerationZ: [Float] = []
-//    var GryoX:[Float] = []
-//    var GryoY:[Float] = []
-//    var GryoZ:[Float] = []
-    enum CodingKeys: String, CodingKey {
-        case email
-        case moveName
-        case time
-    }
+    var gyroZ:[Float] = []
 }
 
 
